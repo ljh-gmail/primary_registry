@@ -135,7 +135,7 @@ services:
 删除原本启动的registry容器
 sudo docker stop registry
 sudo docker rm registry
-sudo docker-compose up -d # 启动registry服务
+sudo docker compose up -d # 启动registry服务
 
 测试:
 sudo docker push 127.0.0.1:5000/my-nginx:1.0 #直接推送无效

@@ -1,0 +1,17 @@
+services:
+  registry:
+    image: registry:2
+    restart: always
+    ports:
+    - "5000:5000"
+    environment:
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry-Realm
+      REGISTRY_AUTH_HTPASSWD_PATH: /auth/password # 账号密码文件
+      REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /data
+      REGISTRY_HTTP_HOST: https://www.minor.website:443
+        #REGISTRY_STORAGE_DELETE_ENABLED: "true" # 启用删除功能
+    volumes:
+      - /registry/minor:/var/lib/registry
+      - /registry/auth:/auth # 鉴权文件目录
+      - /registry/data:/data # 数据目录
